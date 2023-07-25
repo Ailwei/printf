@@ -1,13 +1,12 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
 
 /**
- * _printf - Printf function
- * @format: format.
- * Return: Printed chars.
+ * _printf - Prints formatted output to stdout.
+ * @format: The format string containing conversion specifiers.
+ *
+ * Return: The number of characters printed (excluding the null byte used to end output to strings).
  */
-
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -24,27 +23,27 @@ int _printf(const char *format, ...)
 			format++; /* Move past the '%' */
 			switch (*format)
 			{
-			case 'c':
-				c = va_arg(args, int);
-				putchar(c);
-				printed_chars++;
-				break;
-			case 's':
-				str = va_arg(args, const char *);
-				while (*str)
-				{
-					putchar(*str);
-					str++;
+				case 'c':
+					c = va_arg(args, int);
+					putchar(c);
 					printed_chars++;
-				}
-				break;
-			case '%':
-				putchar('%');
-				printed_chars++;
-				break;
-			default:
-				/* If an unsupported conversion specifier is encountered, ignore it */
-				break;
+					break;
+				case 's':
+					str = va_arg(args, const char *);
+					while (*str)
+					{
+						putchar(*str);
+						str++;
+						printed_chars++;
+					}
+					break;
+				case '%':
+					putchar('%');
+					printed_chars++;
+					break;
+				default:
+					/* If an unsupported conversion specifier is encountered, ignore it */
+					break;
 			}
 		}
 		else
