@@ -67,11 +67,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return count;
 }
-
-int main(void)
-{
-	_printf("Hello, %s! Today is %c.\n", "John", 'S');
-	_printf("Testing %%printf function. A single percent sign: %%\n");
-	return 0;
-}
-
